@@ -1,7 +1,28 @@
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+ 
+
 /* forms */
+
+.navbar-default{
+  background: none;
+  border: none;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color : black;
+}
+
+.navbar-default .navbar-brand{
+  color: darkblue;
+  font-weight:bold;
+  font-family: 'Indie Flower', cursive;
+  font-size:2em;
+  text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+}
+
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
@@ -9,6 +30,24 @@ input, textarea, select, .uneditable-input {
   margin-bottom: 15px;
  
 }
+
+ body, html{
+  margin:0;
+  padding:0;
+  height: 100%;
+  
+}
+
+
+#welcome_top{
+   
+  width: 100%;
+  height: 100%;
+  background-image: asset-url('madasunset.jpg');
+  background-position:bottom;
+  background-size:cover;
+}
+
 
 input {
   height: auto !important;
@@ -28,3 +67,18 @@ input {
     color: red;
   }
 }
+
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
+}
+
