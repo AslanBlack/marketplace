@@ -21,9 +21,7 @@ class UsersController < ApplicationController
       flash[:info] = "Veuillez consulter votre boite mail pour activer votre compte"
       redirect_to root_url
 
-      #log_in @user
-      #flash[:success] = "Bienvenue !" 
-      #redirect_to @user
+     
     else
       render 'new'
     end
