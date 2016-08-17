@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :require_logged_in_user, only: [:index, :edit, :update] 
   before_action :require_correct_user,   only: [:edit, :update]
-   before_action :admin_user,     only: :destroy
+  before_action :admin_user,     only: :destroy
   
   
   
@@ -58,7 +58,7 @@ class UsersController < ApplicationController
   private 
     def user_params 
       params.require(:user).permit(:username, :email, :password,
-                                   :password_confirmation)
+                                   :password_confirmation, :avatar, :remove_avatar)
   
     end
     
@@ -75,7 +75,7 @@ class UsersController < ApplicationController
     
     def require_correct_user
       @user = User.find(params[:id])
-      redirect_to(root_path) unless current_user? (@user)
+      redirect_to(root_path) unless current_user?(@user)
     end
     
     def admin_user

@@ -2,7 +2,9 @@ class User < ActiveRecord::Base
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email
   before_create :create_activation_digest
-
+  mount_uploader :avatar, AvatarUploader
+  validate :avatar_size
+  
   validates :username, presence: true,
             uniqueness: {case_sensitive: false}, 
             length: { minimum: 3, maximum: 25 }
@@ -85,4 +87,11 @@ class User < ActiveRecord::Base
       self.activation_token  = User.new_token
       self.activation_digest = User.digest(activation_token)
     end
+    
+    def avatar_size
+      if avatar.size > 5.megabytes
+        errors.add(:avatar, "trop lourd, ne doit pas exéder 5Mb")
+      end
+    end
+    
 end

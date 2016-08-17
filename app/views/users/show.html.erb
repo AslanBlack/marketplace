@@ -1,3 +1,28 @@
 <%= render 'layouts/navigation'%>
 
-<h1 align="center">Bienvenue <%= @user.username.titleize %></h1>
+
+
+<div class="container ">
+  <div class="id-card">
+    <div class="col-md-4">
+      <p class="Lead name_in_avatar"><%= @user.username.titleize %></p>
+      <div class="avatar-box">
+        <% if @user.avatar? %>
+          <% if current_user?(@user) %>
+              <%= link_to (image_tag @user.avatar.thumb.url, class: "avatar"), edit_user_path(@user)  %>
+           <% else %>
+              <%= image_tag @user.avatar.thumb.url, class: "avatar" %>
+           <% end %>    
+        <% else %>
+          <% if current_user?(@user) %>
+              <%= link_to image_tag("default-avatar.png",  class:"avatar", size: "200x200"), 
+                          edit_user_path(@user)  %>
+          <% else %>
+            <%= image_tag("default-avatar.png", class: "avatar", size: "200x200") %>
+          <% end %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

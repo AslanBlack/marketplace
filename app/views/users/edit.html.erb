@@ -5,9 +5,18 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@user) do |f| %>
+    
+    <%= form_for(@user, html: { multipart: true }) do |f| %>
       <%= render 'shared/error_messages' %>
-
+      <%= f.label :avatar , "Choisir un avatar" %>
+      <%= f.file_field :avatar, accept: 'image/jpeg,image/gif,image/png', class:"form-control"%>
+      <% if f.object.avatar? %>
+      <div> 
+        <%= image_tag f.object.avatar.thumb.url %>
+      </div>   
+        <%= f.label :remove_avatar  %>
+        <%= f.check_box :remove_avatar, class:"form-control remove-avatar-check-box" %> 
+      <% end %>
       <%= f.label :username, "Nom d'utilisateur" %>
       <%= f.text_field :username, class: 'form-control' %>
 
